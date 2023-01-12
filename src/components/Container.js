@@ -12,7 +12,7 @@ const total = {
   eyebrows: 15,
   facial_hair: 17,
   hair: 73,
-  mouths: 25,
+  mouths: 24,
   noses: 1,
   hats: 28,
   glasses: 17,

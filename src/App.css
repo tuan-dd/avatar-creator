@@ -345,7 +345,7 @@ h1 {
 
 /* animation-ny2023 background */
 .animation-ny2023 {
-  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+  /* background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8); */
   top: 0;
   left: 0;
   width: 100vw;
@@ -354,7 +354,7 @@ h1 {
 }
 
 .animation-ny2023 .title-year2023 {
-  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+  /* background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8); */
   overflow: hidden;
 }
 
@@ -454,7 +454,7 @@ h1 {
   }
 
   100% {
-    transform: translateY(800px) rotate(720deg);
+    transform: translateY(90vh) rotate(720deg);
     opacity: 0;
     border-radius: 50%;
   }

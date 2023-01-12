@@ -233,6 +233,7 @@ export default function Container() {
     if(window.localStorage.getItem("saveAvatar").length < 15){
     handleClickRandom()
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // save  numbles avatar localStorage

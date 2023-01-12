@@ -1,5 +1,5 @@
 ---
-Author: Huynh Van anh tuan
+Author: Huynh Van Anh Tuan
 Title: Avatar Creator
 ---
 # Avatar Creator
@@ -7,15 +7,17 @@ Title: Avatar Creator
 
 -The purpose of this project is to practice our skills -with React components.
 
-- Using UseState UseEffect to to re-render 
+- Using UseState UseEffect to to re-render .
 
-- Using 
+- Using localStorage to save Avatar Display.
+
+- Using Object.prototype render value localStorage.
 
 # Using :
--Auto cross out the text of task when clicking on the checkbox.
+-Auto random Avatar when do delete or first time you open web.
 
--Remove the task when click on X button.
+- Click save when you second time access web the avatar you save will show.
 
--Hide all finished tasks when click on "Showing only task -unfinished" (create effect by css transition).
+- click list of part Avatar and show item .
 
--Add task by input form.
+- click items and display avatar will show item you want.

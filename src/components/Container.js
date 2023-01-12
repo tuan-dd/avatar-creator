@@ -230,8 +230,10 @@ export default function Container() {
 
   // if you don't save run handleClickRandom()
   useEffect(() => {
-    if(window.localStorage.getItem("saveAvatar").length < 15){
+    if(!window.localStorage.getItem("saveAvatar")){
     handleClickRandom()
+    }else if (window.localStorage.getItem("saveAvatar").length < 15){
+      handleClickRandom()
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

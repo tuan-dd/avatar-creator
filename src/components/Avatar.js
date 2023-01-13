@@ -3,8 +3,8 @@ import React from 'react'
 function Avatar({chooses}) {
     return (
         <div className="display-avatar">
-            {chooses?.map((item, index) =>
-                (<div className={`avatar-part ${item.className}`} key={item.key} ><img className="img-avatar-part" src={item.src} alt={item.alt} style={{ display: item.display }} /></div>))}
+            {chooses?.map((item) =>
+                (<div className={`avatar-frame ${item.className}`} key={item.key} ><img className="part-avatar" src={item.src} alt={item.alt} style={{ display: item.display }} /></div>))}
         </div>
     )
 }

@@ -171,7 +171,7 @@ details li::after {
   border-radius: 60px;
 }
 
-.avatar-part {
+.avatar-frame {
   position: absolute;
   top: 5%;
   left: 5%;
@@ -179,7 +179,7 @@ details li::after {
   height: 90%;
 }
 
-.img-avatar-part {
+.part-avatar {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -213,9 +213,9 @@ details li::after {
 }
 
 
-/* .custom-avatar */
+/* select-avatar */
 
-.custom-avatar {
+.select-avatar {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -223,7 +223,7 @@ details li::after {
   margin-top: 10px;
 }
 
-.btn-custom {
+.btn-select {
   border: 3px solid #ace2f1;
   border-radius: 30px;
   padding: 14px;
@@ -251,8 +251,8 @@ details li::after {
 }
 
 
-/* container-avatar-list */
-.container-avatar-list {
+/* listOfPart */
+.listOfPart {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -262,7 +262,7 @@ details li::after {
   padding: 10px 0;
 }
 
-.container-avatar-list button {
+.listOfPart button {
   height: auto;
   text-transform: capitalize;
   border-radius: 15px;
@@ -284,7 +284,7 @@ details li::after {
 
 
 /* .container-item-part-img */
-.container-item-part-img {
+.itemOfPart {
   padding: 0 30px;
 }
 
@@ -299,10 +299,11 @@ h1 {
   border-radius: 10px;
 }
 
-.list-part-img-warp {
+.itemOfPart-warp {
   display: flex;
   margin: 0 auto;
   align-content: flex-start;
+  justify-content: center;
   overflow-y: auto;
   /* height: 80vh; */
   row-gap: 5px;
@@ -338,13 +339,6 @@ h1 {
 .btn-choose-part-img:focus-within {
   background-color: pink;
 }
-
-
-
-
-
-
-
 
 
 /* animation-ny2023 background */
@@ -467,11 +461,11 @@ h1 {
 
  /* responsive */
 @media only screen and (max-width: 1450px) {
-  .container-avatar-list button {
+  .listOfPart button {
     font-size: 1.3em;
   }
 
-  .btn-custom {
+  .btn-select {
     padding: 10px;
     font-size: 1.5em;
   }
@@ -481,11 +475,11 @@ h1 {
 }
 
 @media only screen and (max-width: 1100px) {
-  .container-avatar-list button {
+  .listOfPart button {
     font-size: 1em;
   }
 
-  .btn-custom {
+  .btn-select {
     padding: 10px;
     font-size: 1.2em;
   }
@@ -521,7 +515,7 @@ h1 {
     border-radius: 40px;
   }
 
-  .container-avatar-list {
+  .listOfPart {
     column-gap: 5px;
     font-size: 1em;
     flex-direction: row;
@@ -537,7 +531,7 @@ h1 {
     width: 12px;
   }
 
-  .container-avatar-list button {
+  .listOfPart button {
     flex: 1 0 auto;
     width: 80px;
   }
@@ -580,7 +574,7 @@ h1 {
     width: 75vw;
     height: 37vh;
   }
-  .btn-custom {
+  .btn-select {
     padding: 8px;
     font-size: 1.3em;
   }
@@ -611,12 +605,12 @@ h1 {
     border: none;
   }
 
-  .container-avatar-list button {
+  .listOfPart button {
     width: 120px;
     font-size: 1.2em;
   }
 
-  .list-part-img-warp {
+  .itemOfPart-warp {
     height: 100%;
   }
 

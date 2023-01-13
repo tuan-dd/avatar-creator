@@ -3,7 +3,7 @@ import Display from "./Display";
 import Item from "./Item";
 import List from "./List";
 import Animation from "./Animation";
-const total = {
+const total = { // object folder names of parts and numbles
   body: 17,
   "style-clothes-1": 5,
   "style-clothes-2": 5,
@@ -20,65 +20,67 @@ const total = {
   earrings: 32,
   "earrings left": 32
 };
-const numblesOfPart = Object.values(total)
-const accessoriesFolder = ["hats", "glasses", "earrings", "neckwear",]
-const StyleClothesFolder = ["style-clothes-1", "style-clothes-2", "style-clothes-3"]
-const listOfPart = Object.keys(total)
+const numblesOfPart = Object.values(total) // convert  numbles folder names of parts to array
+const listOfPart = Object.keys(total) // convert folder names of parts to array
+const accessoriesFolder = ["hats", "glasses", "earrings", "neckwear",] // These folders in the accessories folder so declared as an array to filter
+const StyleClothesFolder = ["style-clothes-1", "style-clothes-2", "style-clothes-3"] // 
 
 
 
 export default function Container() {
-  // gender string of localStorage to object 
-  const saveAvatarObject = window.localStorage.getItem("saveAvatar") 
-  
-  ? window.localStorage.getItem("saveAvatar").split(",").map(Number).map((item, index) => {
-    if ((index === 1 || index === 2 || index === 3) &&  item !== 0) {
-      item = {
-        className: `${listOfPart[index]}`,
-        src: `character-part/clothes/layer_${index}/${item}.png`,
-        display: "block",
-        key: `${index}`,
-        alt: `img_${item}`
+  // convert string position of localStorage to object after that take saveAvatarObject to chooses
+  const saveAvatarObject = window.localStorage.getItem("saveAvatar")
+    ? window.localStorage.getItem("saveAvatar").split(",").map(Number).map((item, index) => {
+      if ((index === 1 || index === 2 || index === 3) && item !== 0) {
+        item = {
+          className: `${listOfPart[index]}`,
+          src: `character-part/clothes/layer_${index}/${item}.png`,
+          display: "block",
+          key: `${index}`,
+          alt: `img_${item}`
+        }
+      } else if ((index === 13 || index === 12 || index === 11 || index === 10) && item !== 0) {
+        item = {
+          className: `${listOfPart[index]}`,
+          src: `character-part/accessories/${listOfPart[index]}/${item}.png`,
+          display: "block",
+          key: `${index}`,
+          alt: `img_${item}`
+        }
+      } else if (index === 14 && item !== 0) {
+        item = {
+          className: `${listOfPart[index]}`,
+          src: `character-part/accessories/${listOfPart[index].slice(0, 8)}/${item}.png`,
+          display: "block",
+          key: `${index}`,
+          alt: `img_${item}`
+        }
+      } else if (item !== 0) {
+        item = {
+          className: `${listOfPart[index]}`,
+          src: `character-part/${listOfPart[index]}/${item}.png`,
+          display: "block",
+          key: `${index}`,
+          alt: `img_${item}`
+        }
+      } else {
+        item = { className: `${listOfPart[index]}`, src: '', display: "none", key: index }
       }
-    } else if ((index === 13 || index === 12 || index === 11 || index === 10) &&  item !== 0) {
-      item = {
-        className: `${listOfPart[index]}`,
-        src: `character-part/accessories/${listOfPart[index]}/${item}.png`,
-        display: "block",
-        key: `${index}`,
-        alt: `img_${item}`
-      }
-    } else if (index === 14 &&  item !== 0) {
-      item = {
-        className: `${listOfPart[index]}`,
-        src: `character-part/accessories/${listOfPart[index].slice(0, 8)}/${item}.png`,
-        display: "block",
-        key: `${index}`,
-        alt: `img_${item}`
-      }
-    } else if ( item !== 0) {
-      item = {
-        className: `${listOfPart[index]}`,
-        src: `character-part/${listOfPart[index]}/${item}.png`,
-        display: "block",
-        key: `${index}`,
-        alt: `img_${item}`
-      }
-    } else {
-      item = { className: `${listOfPart[index]}`, src: '', display: "none", key: index }
-    }
-    return item
-  }) : ''
-  // console.log(window.localStorage.getItem("saveAvatar").length)
-  const [nameOfPart, setNameOfPart] = useState([])
-  const [chooses, setChooses] = useState(() => saveAvatarObject || listOfPart.map((item, index) => ({ className: item, src: '', display: "none", key: index })))
-  const [saveAvatar, setSaveAvatar] = useState(Array(numblesOfPart.length).fill(null)) // save numbles img 
+      return item
+    }) : listOfPart.map((item, index) => ({ className: item, src: '', display: "none", key: index }))
+
+  const [itemOfPart, setitemOfPart] = useState([])
+  const [chooses, setChooses] = useState(saveAvatarObject)
+
+  const [saveAvatar, setSaveAvatar] = useState(Array(numblesOfPart.length).fill(null)) // save numbles position img 
   const [clickSave, setClickSave] = useState(false)
+
+
+
   // click item.js it will show item in display
   const handleClickOption = (e) => {
     e.preventDefault()
     const element = e.target
-    // console.log(element)
     const object = {
       className: element.id,
       src: element.src,
@@ -96,20 +98,22 @@ export default function Container() {
     setSaveAvatar(saveAvatar.map((item, index) => {
       if (listOfPart[index] === object.className) {
         return item = parseInt(object.alt.slice(4))
-      }
+      } 
       else {
         return item
-      }
+      } // save numbles position of img
     }))
     // console.log(saveAvatar)
   }
+
+
   // click it will random all item in list and show in display
   const handleClickRandom = () => {
-    const objectRandom = Object.entries(total).map(e => ({ [e[0]]: Math.floor(Math.random() * e[1]) + 1 }))
-    setSaveAvatar(saveAvatar.map((item, index) => item = parseInt(Object.values(objectRandom[index])))) // save numbles of img
+    const objectRandom = Object.entries(total).map(e => ({ [e[0]]: Math.floor(Math.random() * e[1]) + 1 })) // random numbles position of img
+    setSaveAvatar(saveAvatar.map((item, index) => item = parseInt(Object.values(objectRandom[index])))) // save numbles position of img
     const objectAvatarRandom = objectRandom.map((e, index) => {
       e =
-        accessoriesFolder.includes(Object.keys(e).toString()) ?
+        accessoriesFolder.includes(Object.keys(e).toString()) ? // check to scr enable correct  directory link
           {
             className: Object.keys(e).toString(),
             src: `character-part/accessories/${Object.keys(e).toString()}/${Object.values(e)}.png`,
@@ -145,8 +149,8 @@ export default function Container() {
     setChooses([...objectAvatarRandom])
   }
   // click gender male or female or other and it will show hair of gender that you choose in item.js
+  // folders  male , female in hair folders  But total no key boy and girl
   const handleClickGender = (e) => {
-    // console.log("run")
     const element = e.target.textContent
     if (element === "Male") {
       document.querySelector('h1').innerHTML = element
@@ -158,7 +162,7 @@ export default function Container() {
           alt: `img_${i + 1}`,
           id: "hair"
         }
-      } setNameOfPart([...img])
+      } setitemOfPart([...img])
     } else if (element === "Female") {
       document.querySelector('h1').innerHTML = element
       const img = Array(46)
@@ -169,7 +173,7 @@ export default function Container() {
           alt: `img_${i + 1}`,
           id: "hair",
         }
-      } setNameOfPart([...img])
+      } setitemOfPart([...img])
     } else {
       document.querySelector('h1').innerHTML = element
       const img = Array(73)
@@ -180,12 +184,12 @@ export default function Container() {
           alt: `img_${i + 1}`,
           id: "hair",
         }
-      } setNameOfPart([...img])
+      } setitemOfPart([...img])
     }
 
   }
   // click list it will show item in item.js
-  const handleClick = (e) => {
+  const handleClickName = (e) => {
     const content = e.target.textContent
     document.querySelector('h1').innerHTML = content
     listOfPart.forEach((item, index) => {
@@ -217,30 +221,28 @@ export default function Container() {
                   id: `${item}`
                 }
         }
-        // console.log(img)
-        return setNameOfPart([...img])
+        return setitemOfPart([...img])
       }
     })
   }
   const handleClickDelete = () => {
     setChooses(listOfPart.map((item, index) => ({ className: item, src: '', display: "none", key: index })));
     setSaveAvatar(Array(numblesOfPart.length).fill(null));
-    setClickSave(true)
+    setClickSave(true) // automatically randomize whenever the user visits
   }
 
-  // if you don't save run handleClickRandom()
+  // if you don't save auto handleClickRandom()
   useEffect(() => {
-    if(!window.localStorage.getItem("saveAvatar")){
-    handleClickRandom()
-    }else if (window.localStorage.getItem("saveAvatar").length < 15){
+    if (!window.localStorage.getItem("saveAvatar")) {
+      handleClickRandom()
+    } else if (window.localStorage.getItem("saveAvatar").length < 15) { // when you delete localStorage === 14 commas
       handleClickRandom()
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // save  numbles avatar localStorage
   useEffect(() => {
-    // console.log('run')
     if (clickSave) {
       window.localStorage.setItem('saveAvatar', saveAvatar.toString())
     }
@@ -250,9 +252,10 @@ export default function Container() {
 
   return (
     <div className="container">
-      <Display listOfPart={listOfPart} setChooses={setChooses} chooses={chooses} handleClickGender={handleClickGender} handleClickRandom={handleClickRandom} setClickSave={setClickSave} handleClickDelete={handleClickDelete} />
-      <List listOfPart={listOfPart} handleClick={handleClick} />
-      <Item nameOfPart={nameOfPart} handleClickOption={handleClickOption} />
+      <Display chooses={chooses} handleClickGender={handleClickGender} handleClickRandom={handleClickRandom}
+        setClickSave={setClickSave} handleClickDelete={handleClickDelete} />
+      <List listOfPart={listOfPart} handleClickName={handleClickName} />
+      <Item itemOfPart={itemOfPart} handleClickOption={handleClickOption} />
       <Animation />
     </div >
   );

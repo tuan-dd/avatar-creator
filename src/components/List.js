@@ -1,10 +1,10 @@
 import React from 'react'
 
-function List({handleClick,listOfPart,handleClickRandom}) {
+function List({handleClickName,listOfPart}) {
   return (
-    <div className="container-avatar-list">
+    <div className="listOfPart">
           {listOfPart.map((item, index) =>
-          (<button onClick={handleClick} key={index} className="btn btn-name-list">
+          (<button onClick={handleClickName} key={index} className="btn btn-name-list">
             {item}</button>))}
       </div>
   )
